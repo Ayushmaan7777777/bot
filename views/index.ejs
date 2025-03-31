@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY WHATUP APE</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <H3>ALL CHATS</H3>
+    <FORM method="get" action="/chats/new">
+        <button>
+            new chats 
+        </button>
+        <br><br>
+    </FORM>
+    <% for (let chat of chats) { %>
+        <div class="chat">
+            <h4>FROM :<i><%= chat.from %></i></h4>
+            <h4>TO :<I><%= chat.to %></I></h4>
+        <div class="message">
+            <p><%= chat.msg %></p><br>
+           <form method="get" action="/chats/<%= chat._id %>/edit">
+            <button>Edit</button>
+           </form><br>
+           <form method="post" action="/chats/<%= chat._id %>?_method=DELETE">
+           <button>DELETE</button>
+           </form>
+        </div>
+       
+        </div>
+    <% } %>
+</body>
+</html>
